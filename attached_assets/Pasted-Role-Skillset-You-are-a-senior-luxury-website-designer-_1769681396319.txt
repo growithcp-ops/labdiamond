@@ -1,0 +1,172 @@
+Role & Skillset
+You are a senior luxury website designer, motion graphics expert, and front-end engineer experienced in premium jewelry brands.
+
+1️⃣ THEME & VISUAL STYLE
+
+Use this theme consistently across the site:
+
+Luxury, futuristic, minimal
+
+Dark charcoal / near-black background
+
+Soft platinum whites, subtle silver accents
+
+No bright colors, no flashy effects
+
+Clean grid, large spacing, calm visual rhythm
+
+Typography:
+
+Elegant serif for headings
+
+Modern sans-serif for body text
+
+Large headlines, slow reveals
+
+2️⃣ MOTION LANGUAGE (VERY IMPORTANT)
+
+Implement slow, cinematic, scroll-driven motion:
+
+Ease-in-out only (no bounce, no elastic)
+
+Text appears first, visuals after
+
+Subtle fades, gentle slides, slight scaling
+
+Everything should feel premium and calm
+
+Use:
+
+GSAP + ScrollTrigger (preferred)
+
+Or Framer Motion
+
+3️⃣ MID SECTION: CARBON → CRYSTAL TRANSFORMATION
+
+Create a scroll-based transformation section:
+
+Behavior:
+
+Start with a carbon-like dark textured image
+
+As user scrolls:
+
+Carbon slowly fades, cracks, or dissolves
+
+Transforms into a clear lab-grown diamond
+
+Light reflections increase gradually
+
+Motion rules:
+
+Smooth cross-fade + scale-up
+
+Diamond appears sharper and brighter as scroll progresses
+
+Section should feel magical but subtle
+
+4️⃣ COLLECTION SECTION (CORE FEATURE)
+
+Use 5 different lab-grown diamond images.
+
+Initial Layout:
+
+One main image appears in the center first
+
+Then:
+
+Two images on the right fade in
+
+Two images on the left fade in
+
+Overall layout forms a V-shape
+
+Motion Sequence:
+
+Center image fades + scales in
+
+Right two images fade in with slight upward offset
+
+Left two images fade in with slight upward offset
+
+5️⃣ HORIZONTAL SCROLL BEHAVIOR
+
+Images are scrollable horizontally
+
+Horizontal scroll should feel smooth and premium
+
+Maintain V-shape alignment while scrolling
+
+6️⃣ INTERACTION LOGIC (IMPORTANT)
+Click Behavior:
+
+Step 1:
+Clicking any diamond image →
+
+It expands smoothly into a full-screen hero page
+
+Dark background, large centered diamond
+
+Step 2:
+Clicking again on the hero page →
+
+Reveals product details
+
+Specs, description, ethical lab-grown messaging
+
+Step 3:
+Clicking Next button →
+
+Slides horizontally to the next diamond product
+
+Smooth slide transition (no page reload)
+
+7️⃣ AI-GENERATED DIAMOND IMAGES
+
+Do NOT use stock images.
+
+Generate diamond visuals using prompt-based AI:
+
+Example prompt:
+“Ultra-realistic lab-grown diamond, luxury jewelry photography, studio lighting, black background, high clarity, premium reflections”
+
+Use generated images for:
+
+Carbon → crystal section
+
+Collection images
+
+Hero product views
+
+Include soft loading animations while images generate.
+
+8️⃣ TECH STACK & CODE QUALITY
+
+React
+
+Tailwind CSS
+
+GSAP + ScrollTrigger
+
+Modular components
+
+Clean, readable, production-ready code
+
+Performance:
+
+Lazy loading
+
+Optimized animations
+
+60fps target
+
+9️⃣ FINAL EXPECTATION
+
+The website should feel like:
+A 2026 luxury lab-grown diamond brand
+
+Elegant. Calm. Ethical. High-end.
+
+Important:
+Do not redesign creatively.
+Follow the described animation sequence and interaction flow exactly.

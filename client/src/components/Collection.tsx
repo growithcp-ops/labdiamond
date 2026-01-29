@@ -48,7 +48,7 @@ export default function Collection() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    if (!selectedDiamond) {
+    if (!selectedDiamond && containerRef.current) {
       const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 1 } });
       
       // Middle image first
@@ -70,6 +70,44 @@ export default function Collection() {
         { opacity: 1, scale: 0.9, y: 30, stagger: 0.2 },
         "-=0.5"
       );
+
+      // Add hover-to-scroll functionality
+      const container = containerRef.current;
+      let scrollInterval: NodeJS.Timeout;
+
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const width = rect.width;
+        const edgeSize = 150; // pixels from edge to trigger scroll
+
+        if (x < edgeSize) {
+          clearInterval(scrollInterval);
+          scrollInterval = setInterval(() => {
+            container.scrollLeft -= 5;
+          }, 10);
+        } else if (x > width - edgeSize) {
+          clearInterval(scrollInterval);
+          scrollInterval = setInterval(() => {
+            container.scrollLeft += 5;
+          }, 10);
+        } else {
+          clearInterval(scrollInterval);
+        }
+      };
+
+      const handleMouseLeave = () => {
+        clearInterval(scrollInterval);
+      };
+
+      container.addEventListener("mousemove", handleMouseMove);
+      container.addEventListener("mouseleave", handleMouseLeave);
+
+      return () => {
+        container.removeEventListener("mousemove", handleMouseMove);
+        container.removeEventListener("mouseleave", handleMouseLeave);
+        clearInterval(scrollInterval);
+      };
     }
   }, [selectedDiamond]);
 

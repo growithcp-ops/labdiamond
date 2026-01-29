@@ -103,7 +103,7 @@ export default function Collection() {
           {diamonds.map((diamond, index) => (
             <div
               key={diamond.id}
-              ref={el => cardsRef.current[index] = el}
+              ref={el => { cardsRef.current[index] = el; }}
               onClick={() => setSelectedDiamond(diamond.id)}
               className="relative flex-shrink-0 w-64 h-80 md:w-80 md:h-[450px] cursor-pointer group"
             >

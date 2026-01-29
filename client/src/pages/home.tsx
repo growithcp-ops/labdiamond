@@ -4,9 +4,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Gem, Sparkles, ArrowUpRight } from "lucide-react";
 
-import Hero from "@/components/Hero";
-import Transformation from "@/components/Transformation";
-import Collection from "@/components/Collection";
+import Hero from "../components/Hero";
+import Transformation from "../components/Transformation";
+import Collection from "../components/Collection";
 
 function useLenis(enabled: boolean) {
   useEffect(() => {

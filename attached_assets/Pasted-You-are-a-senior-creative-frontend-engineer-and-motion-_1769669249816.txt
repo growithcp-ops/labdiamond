@@ -1,0 +1,95 @@
+You are a senior creative frontend engineer and motion designer.
+
+Your task is to design and build a luxury, high-end website inspired by the attached reference video’s animations, transitions, pacing, and motion language — but NOT copy content or branding.
+
+Brand context:
+The brand sells premium lab-grown diamonds.
+The brand personality is: elegant, futuristic, minimal, ethical luxury, science-meets-art.
+
+Core objectives:
+- Replicate the same level of smoothness, scroll-based storytelling, and cinematic motion as the reference video
+- Use Lenis for ultra-smooth scrolling
+- Use Spline for interactive 3D diamond scenes
+- Maintain a clean, white/black/soft-neutral luxury palette with subtle shimmer effects
+- Typography should feel premium (serif + modern sans-serif pairing)
+
+Tech stack:
+- Next.js or React (App Router preferred)
+- Tailwind CSS
+- Lenis for smooth scrolling
+- GSAP + ScrollTrigger for animations
+- Spline embeds for 3D diamonds
+- Framer Motion for micro-interactions
+- AI image generation integration (mock API acceptable)
+
+Website structure:
+
+1. Hero Section
+- Full viewport cinematic hero
+- Slow parallax movement on scroll
+- Floating lab-grown diamond rendered in Spline
+- Subtle light refraction animation
+- Headline example:
+  “Pure Brilliance. Engineered by Science.”
+- Scroll hint animation (minimal)
+
+2. Scroll-Driven Story Section
+- As the user scrolls, content fades/slides in smoothly
+- Explain:
+  • What lab-grown diamonds are
+  • Ethical sourcing
+  • Same brilliance, zero compromise
+- Use pinned sections and horizontal motion like the reference video
+
+3. Interactive 3D Diamond Section
+- Embedded Spline scene
+- User can rotate diamond slightly on mouse move
+- Light reacts to cursor movement
+- Background stays minimal
+
+4. AI-Generated Diamond Visuals Section
+- Integrate an AI image generation workflow:
+  • Generate hyper-realistic lab-grown diamond images
+  • Clean studio lighting
+  • Transparent or white background
+- Use a placeholder/mock API if real AI API keys are unavailable
+- Images should lazy-load with fade-in animation
+
+5. Craftsmanship / Science Section
+- Scroll-triggered diagrams or text reveals
+- Clean grid layout
+- Motion should feel slow, intentional, and premium
+
+6. Product / Collection Preview
+- Minimal cards
+- Hover animations: soft scale + shadow + glow
+- No e-commerce checkout required
+
+7. Footer
+- Calm, slow fade-in
+- Brand philosophy text
+- Minimal links
+
+Animation & Motion Guidelines:
+- No harsh or fast animations
+- Everything should feel smooth, floaty, and expensive
+- Use easing curves similar to cinematic websites
+- Prefer opacity, translateY, scale, and blur transitions
+- Avoid overusing effects
+
+Performance:
+- Optimize for 60fps
+- Lazy load Spline scenes and AI images
+- Ensure smooth scrolling does not block interactions
+
+Deliverables:
+- Full working website code
+- Modular components
+- Clean folder structure
+- Clear comments explaining animation logic
+- Placeholder assets where necessary
+
+Important:
+Do NOT copy the reference video directly.
+Match the animation style, motion pacing, and storytelling quality only.
+Make it feel original, premium, and suitable for a lab-grown diamond luxury brand.

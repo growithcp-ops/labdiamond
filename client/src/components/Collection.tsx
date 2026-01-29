@@ -51,11 +51,14 @@ export default function Collection() {
     if (!selectedDiamond && containerRef.current) {
       const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 1 } });
       
-      // V-shape layout logic: calculate y offsets for V form
-      const getYOffset = (index: number) => {
+      // V-shape layout logic: calculate y offsets and scale for V form
+      const getLayout = (index: number) => {
         const centerIndex = 2;
         const diff = Math.abs(index - centerIndex);
-        return diff * 120; // Increased offset for more dramatic V-shape as per image
+        return {
+          y: diff * 80, // Increased offset for more dramatic V-shape
+          scale: 1 - (diff * 0.15) // Center is 1.0, sides are 0.85, 0.7
+        };
       };
 
       // Middle image first
@@ -64,25 +67,25 @@ export default function Collection() {
         { opacity: 1, scale: 1, y: 0 }
       );
 
-      // Right two images fade in with V-shape offset
+      // Right two images fade in with V-shape offset and scale
       tl.fromTo([cardsRef.current[3], cardsRef.current[4]], 
-        { opacity: 0, scale: 0.8, y: 200 }, 
+        { opacity: 0, scale: 0.5, y: 200 }, 
         { 
           opacity: 1, 
-          scale: 1, 
-          y: (i) => getYOffset(i + 3),
+          scale: (i) => getLayout(i + 3).scale, 
+          y: (i) => getLayout(i + 3).y,
           stagger: 0.2 
         },
         "-=0.5"
       );
 
-      // Left two images fade in with V-shape offset
+      // Left two images fade in with V-shape offset and scale
       tl.fromTo([cardsRef.current[1], cardsRef.current[0]], 
-        { opacity: 0, scale: 0.8, y: 200 }, 
+        { opacity: 0, scale: 0.5, y: 200 }, 
         { 
           opacity: 1, 
-          scale: 1, 
-          y: (i) => getYOffset(1 - i),
+          scale: (i) => getLayout(1 - i).scale, 
+          y: (i) => getLayout(1 - i).y,
           stagger: 0.2 
         },
         "-=0.5"
@@ -167,10 +170,10 @@ export default function Collection() {
               <img 
                 src={diamond.image} 
                 alt={diamond.name}
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
               />
-              <div className="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <p className="text-sm tracking-[0.2em] font-light uppercase">{diamond.name}</p>
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none">
+                <p className="text-lg tracking-[0.3em] font-light uppercase text-white drop-shadow-lg">{diamond.name}</p>
               </div>
             </div>
           ))}

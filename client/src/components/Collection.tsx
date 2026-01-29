@@ -51,23 +51,40 @@ export default function Collection() {
     if (!selectedDiamond && containerRef.current) {
       const tl = gsap.timeline({ defaults: { ease: "power2.out", duration: 1 } });
       
+      // V-shape layout logic: calculate y offsets for V form
+      const getYOffset = (index: number) => {
+        const centerIndex = 2;
+        const diff = Math.abs(index - centerIndex);
+        return diff * 60; // Increase Y offset as we move away from center
+      };
+
       // Middle image first
       tl.fromTo(cardsRef.current[2], 
-        { opacity: 0, scale: 0.8, y: 50 }, 
+        { opacity: 0, scale: 0.8, y: 150 }, 
         { opacity: 1, scale: 1, y: 0 }
       );
 
-      // Right two images fade in
+      // Right two images fade in with V-shape offset
       tl.fromTo([cardsRef.current[3], cardsRef.current[4]], 
-        { opacity: 0, scale: 0.8, y: 80 }, 
-        { opacity: 1, scale: 0.9, y: 30, stagger: 0.2 },
+        { opacity: 0, scale: 0.8, y: 200 }, 
+        { 
+          opacity: 1, 
+          scale: 0.9, 
+          y: (i) => getYOffset(i + 3),
+          stagger: 0.2 
+        },
         "-=0.5"
       );
 
-      // Left two images fade in
+      // Left two images fade in with V-shape offset
       tl.fromTo([cardsRef.current[1], cardsRef.current[0]], 
-        { opacity: 0, scale: 0.8, y: 80 }, 
-        { opacity: 1, scale: 0.9, y: 30, stagger: 0.2 },
+        { opacity: 0, scale: 0.8, y: 200 }, 
+        { 
+          opacity: 1, 
+          scale: 0.9, 
+          y: (i) => getYOffset(1 - i),
+          stagger: 0.2 
+        },
         "-=0.5"
       );
 
@@ -136,16 +153,17 @@ export default function Collection() {
       {!selectedDiamond ? (
         <div 
           ref={containerRef}
-          className="flex items-center justify-center gap-4 md:gap-8 px-8 overflow-x-auto no-scrollbar w-full max-w-7xl"
+          className="flex items-center justify-center gap-4 md:gap-8 px-8 overflow-x-auto no-scrollbar w-full max-w-7xl py-20 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {diamonds.map((diamond, index) => (
             <div
               key={diamond.id}
               ref={el => { cardsRef.current[index] = el; }}
               onClick={() => setSelectedDiamond(diamond.id)}
-              className="relative flex-shrink-0 w-64 h-80 md:w-80 md:h-[450px] cursor-pointer group"
+              className="relative flex-shrink-0 w-64 h-80 md:w-80 md:h-[450px] cursor-pointer group rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-white/5"
             >
-              <div className="absolute inset-0 border border-white/10 group-hover:border-white/30 transition-colors duration-500" />
+              <div className="absolute inset-0 border border-white/5 group-hover:border-white/20 transition-colors duration-500 rounded-2xl z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500 z-1" />
               <img 
                 src={diamond.image} 
                 alt={diamond.name}

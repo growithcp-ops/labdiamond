@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Sparkles } from "lucide-react";
-import heroBg from "../assets/images/hero_bg.png";
+import heroBg from "../assets/images/hero_bg_elegant.png";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);

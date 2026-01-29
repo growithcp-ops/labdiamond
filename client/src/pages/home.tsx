@@ -341,6 +341,14 @@ export default function Home() {
 
   const aiVisible = [aiUrls[0], aiUrls[1], aiUrls[2]].filter(Boolean) as string[];
 
+useEffect(() => {
+  setAiUrls((prev) => {
+    const seeded = [...prev];
+    while (seeded.length < 3) seeded.push(FALLBACK_IMAGES[seeded.length % FALLBACK_IMAGES.length]);
+    return seeded.slice(0, 3);
+  });
+}, []);
+
   return (
     <div ref={rootRef} className="min-h-screen" data-testid="page-home">
       {/* HERO (PINNED) */}
